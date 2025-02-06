@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"net/http"
@@ -15,7 +15,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     })
 
     // Menjalankan Fiber aplikasi pada HTTP handler
-    app.Handler()
+    app.Handler().ServeHTTP(w, r)
 }
 
 // Main function harus tetap ada untuk Vercel
