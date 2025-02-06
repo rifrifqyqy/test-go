@@ -1,25 +1,15 @@
-package handler
+package main
 
 import (
+	"fmt"
 	"net/http"
-
-	"github.com/gofiber/fiber/v2"
 )
 
-// Handler untuk menjalankan aplikasi Fiber
-func Handler(w http.ResponseWriter, r *http.Request) {
-    app := fiber.New()
-
-    app.Get("/", func(c *fiber.Ctx) error {
-        return c.SendString("Hello, Vercel!")
-    })
-
-    // Menjalankan Fiber aplikasi pada HTTP handler
-    app.Handler().ServeHTTP(w, r)
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, Vercel!")
 }
 
-// Main function harus tetap ada untuk Vercel
 func main() {
-    http.HandleFunc("/", Handler)
+    http.HandleFunc("/", handler)
     http.ListenAndServe(":3000", nil)
 }
