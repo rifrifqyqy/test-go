@@ -1,15 +1,10 @@
-package main
+package handler
 
 import (
 	"fmt"
 	"net/http"
 )
-
-func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, Vercel!")
-}
-
-func main() {
-    http.HandleFunc("/", handler)
-    http.ListenAndServe(":3000", nil)
+ 
+func Handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 }
